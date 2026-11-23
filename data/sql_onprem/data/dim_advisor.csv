@@ -1,0 +1,101 @@
+AdvisorKey,AdvisorName,TeamName,BranchName,AdvisorRegion,IsSynthetic
+88,Synthetic Advisor 088,Team 9,Branch 18,British Columbia,true
+89,Synthetic Advisor 089,Team 9,Branch 18,Alberta,true
+90,Synthetic Advisor 090,Team 9,Branch 18,Atlantic,true
+91,Synthetic Advisor 091,Team 10,Branch 19,Ontario,true
+92,Synthetic Advisor 092,Team 10,Branch 19,Quebec,true
+93,Synthetic Advisor 093,Team 10,Branch 19,British Columbia,true
+94,Synthetic Advisor 094,Team 10,Branch 19,Alberta,true
+95,Synthetic Advisor 095,Team 10,Branch 19,Atlantic,true
+96,Synthetic Advisor 096,Team 10,Branch 20,Ontario,true
+97,Synthetic Advisor 097,Team 10,Branch 20,Quebec,true
+98,Synthetic Advisor 098,Team 10,Branch 20,British Columbia,true
+99,Synthetic Advisor 099,Team 10,Branch 20,Alberta,true
+100,Synthetic Advisor 100,Team 10,Branch 20,Atlantic,true
+63,Synthetic Advisor 063,Team 7,Branch 13,British Columbia,true
+64,Synthetic Advisor 064,Team 7,Branch 13,Alberta,true
+65,Synthetic Advisor 065,Team 7,Branch 13,Atlantic,true
+66,Synthetic Advisor 066,Team 7,Branch 14,Ontario,true
+67,Synthetic Advisor 067,Team 7,Branch 14,Quebec,true
+68,Synthetic Advisor 068,Team 7,Branch 14,British Columbia,true
+69,Synthetic Advisor 069,Team 7,Branch 14,Alberta,true
+70,Synthetic Advisor 070,Team 7,Branch 14,Atlantic,true
+71,Synthetic Advisor 071,Team 8,Branch 15,Ontario,true
+72,Synthetic Advisor 072,Team 8,Branch 15,Quebec,true
+73,Synthetic Advisor 073,Team 8,Branch 15,British Columbia,true
+74,Synthetic Advisor 074,Team 8,Branch 15,Alberta,true
+75,Synthetic Advisor 075,Team 8,Branch 15,Atlantic,true
+38,Synthetic Advisor 038,Team 4,Branch 8,British Columbia,true
+39,Synthetic Advisor 039,Team 4,Branch 8,Alberta,true
+40,Synthetic Advisor 040,Team 4,Branch 8,Atlantic,true
+41,Synthetic Advisor 041,Team 5,Branch 9,Ontario,true
+42,Synthetic Advisor 042,Team 5,Branch 9,Quebec,true
+43,Synthetic Advisor 043,Team 5,Branch 9,British Columbia,true
+44,Synthetic Advisor 044,Team 5,Branch 9,Alberta,true
+45,Synthetic Advisor 045,Team 5,Branch 9,Atlantic,true
+46,Synthetic Advisor 046,Team 5,Branch 10,Ontario,true
+47,Synthetic Advisor 047,Team 5,Branch 10,Quebec,true
+48,Synthetic Advisor 048,Team 5,Branch 10,British Columbia,true
+49,Synthetic Advisor 049,Team 5,Branch 10,Alberta,true
+50,Synthetic Advisor 050,Team 5,Branch 10,Atlantic,true
+51,Synthetic Advisor 051,Team 6,Branch 11,Ontario,true
+52,Synthetic Advisor 052,Team 6,Branch 11,Quebec,true
+53,Synthetic Advisor 053,Team 6,Branch 11,British Columbia,true
+54,Synthetic Advisor 054,Team 6,Branch 11,Alberta,true
+55,Synthetic Advisor 055,Team 6,Branch 11,Atlantic,true
+56,Synthetic Advisor 056,Team 6,Branch 12,Ontario,true
+57,Synthetic Advisor 057,Team 6,Branch 12,Quebec,true
+58,Synthetic Advisor 058,Team 6,Branch 12,British Columbia,true
+59,Synthetic Advisor 059,Team 6,Branch 12,Alberta,true
+60,Synthetic Advisor 060,Team 6,Branch 12,Atlantic,true
+61,Synthetic Advisor 061,Team 7,Branch 13,Ontario,true
+62,Synthetic Advisor 062,Team 7,Branch 13,Quebec,true
+13,Synthetic Advisor 013,Team 2,Branch 3,British Columbia,true
+14,Synthetic Advisor 014,Team 2,Branch 3,Alberta,true
+15,Synthetic Advisor 015,Team 2,Branch 3,Atlantic,true
+16,Synthetic Advisor 016,Team 2,Branch 4,Ontario,true
+17,Synthetic Advisor 017,Team 2,Branch 4,Quebec,true
+18,Synthetic Advisor 018,Team 2,Branch 4,British Columbia,true
+19,Synthetic Advisor 019,Team 2,Branch 4,Alberta,true
+20,Synthetic Advisor 020,Team 2,Branch 4,Atlantic,true
+21,Synthetic Advisor 021,Team 3,Branch 5,Ontario,true
+22,Synthetic Advisor 022,Team 3,Branch 5,Quebec,true
+23,Synthetic Advisor 023,Team 3,Branch 5,British Columbia,true
+24,Synthetic Advisor 024,Team 3,Branch 5,Alberta,true
+25,Synthetic Advisor 025,Team 3,Branch 5,Atlantic,true
+76,Synthetic Advisor 076,Team 8,Branch 16,Ontario,true
+77,Synthetic Advisor 077,Team 8,Branch 16,Quebec,true
+78,Synthetic Advisor 078,Team 8,Branch 16,British Columbia,true
+79,Synthetic Advisor 079,Team 8,Branch 16,Alberta,true
+80,Synthetic Advisor 080,Team 8,Branch 16,Atlantic,true
+81,Synthetic Advisor 081,Team 9,Branch 17,Ontario,true
+82,Synthetic Advisor 082,Team 9,Branch 17,Quebec,true
+83,Synthetic Advisor 083,Team 9,Branch 17,British Columbia,true
+84,Synthetic Advisor 084,Team 9,Branch 17,Alberta,true
+85,Synthetic Advisor 085,Team 9,Branch 17,Atlantic,true
+86,Synthetic Advisor 086,Team 9,Branch 18,Ontario,true
+87,Synthetic Advisor 087,Team 9,Branch 18,Quebec,true
+1,Synthetic Advisor 001,Team 1,Branch 1,Ontario,true
+2,Synthetic Advisor 002,Team 1,Branch 1,Quebec,true
+3,Synthetic Advisor 003,Team 1,Branch 1,British Columbia,true
+4,Synthetic Advisor 004,Team 1,Branch 1,Alberta,true
+5,Synthetic Advisor 005,Team 1,Branch 1,Atlantic,true
+6,Synthetic Advisor 006,Team 1,Branch 2,Ontario,true
+7,Synthetic Advisor 007,Team 1,Branch 2,Quebec,true
+8,Synthetic Advisor 008,Team 1,Branch 2,British Columbia,true
+9,Synthetic Advisor 009,Team 1,Branch 2,Alberta,true
+10,Synthetic Advisor 010,Team 1,Branch 2,Atlantic,true
+11,Synthetic Advisor 011,Team 2,Branch 3,Ontario,true
+12,Synthetic Advisor 012,Team 2,Branch 3,Quebec,true
+26,Synthetic Advisor 026,Team 3,Branch 6,Ontario,true
+27,Synthetic Advisor 027,Team 3,Branch 6,Quebec,true
+28,Synthetic Advisor 028,Team 3,Branch 6,British Columbia,true
+29,Synthetic Advisor 029,Team 3,Branch 6,Alberta,true
+30,Synthetic Advisor 030,Team 3,Branch 6,Atlantic,true
+31,Synthetic Advisor 031,Team 4,Branch 7,Ontario,true
+32,Synthetic Advisor 032,Team 4,Branch 7,Quebec,true
+33,Synthetic Advisor 033,Team 4,Branch 7,British Columbia,true
+34,Synthetic Advisor 034,Team 4,Branch 7,Alberta,true
+35,Synthetic Advisor 035,Team 4,Branch 7,Atlantic,true
+36,Synthetic Advisor 036,Team 4,Branch 8,Ontario,true
+37,Synthetic Advisor 037,Team 4,Branch 8,Quebec,true

@@ -1,0 +1,696 @@
+{
+  "status": "PASSED",
+  "generator_version": "1.0",
+  "seed": 20261115,
+  "as_of_date": "2026-10-31",
+  "all_data_synthetic": true,
+  "tables": {
+    "dim_date": {
+      "grain": "One row per calendar date; illustrative fiscal year starts November 1",
+      "primary_key": [
+        "DateKey"
+      ],
+      "expected_rows": 1461,
+      "references": {},
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "DateKey",
+          "type": "int"
+        },
+        {
+          "name": "Date",
+          "type": "date"
+        },
+        {
+          "name": "CalendarYear",
+          "type": "int"
+        },
+        {
+          "name": "CalendarQuarter",
+          "type": "int"
+        },
+        {
+          "name": "MonthNumber",
+          "type": "int"
+        },
+        {
+          "name": "MonthName",
+          "type": "string"
+        },
+        {
+          "name": "YearMonth",
+          "type": "string"
+        },
+        {
+          "name": "MonthStartDateKey",
+          "type": "int"
+        },
+        {
+          "name": "MonthEndDateKey",
+          "type": "int"
+        },
+        {
+          "name": "DayOfMonth",
+          "type": "int"
+        },
+        {
+          "name": "DayName",
+          "type": "string"
+        },
+        {
+          "name": "IsWeekend",
+          "type": "boolean"
+        },
+        {
+          "name": "FiscalYear",
+          "type": "int"
+        },
+        {
+          "name": "FiscalQuarter",
+          "type": "int"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "dim_client": {
+      "grain": "One row per client SCD type 2 version; fact dates resolve to half-open validity intervals",
+      "primary_key": [
+        "ClientKey"
+      ],
+      "expected_rows": 11000,
+      "references": {},
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "ClientKey",
+          "type": "int"
+        },
+        {
+          "name": "ClientId",
+          "type": "int"
+        },
+        {
+          "name": "ClientName",
+          "type": "string"
+        },
+        {
+          "name": "HouseholdId",
+          "type": "int"
+        },
+        {
+          "name": "HouseholdName",
+          "type": "string"
+        },
+        {
+          "name": "Region",
+          "type": "string"
+        },
+        {
+          "name": "Segment",
+          "type": "string"
+        },
+        {
+          "name": "RiskBand",
+          "type": "string"
+        },
+        {
+          "name": "AgeAtBaseline",
+          "type": "int"
+        },
+        {
+          "name": "PreferredChannel",
+          "type": "string"
+        },
+        {
+          "name": "OnboardDate",
+          "type": "date"
+        },
+        {
+          "name": "EffectiveFrom",
+          "type": "date"
+        },
+        {
+          "name": "EffectiveToExclusive",
+          "type": "date"
+        },
+        {
+          "name": "IsCurrent",
+          "type": "boolean"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "dim_account_owner": {
+      "grain": "One row per current account owner; distinct analytical role from historical economic client",
+      "primary_key": [
+        "OwnerKey"
+      ],
+      "expected_rows": 10000,
+      "references": {},
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "OwnerKey",
+          "type": "int"
+        },
+        {
+          "name": "OwnerName",
+          "type": "string"
+        },
+        {
+          "name": "HouseholdId",
+          "type": "int"
+        },
+        {
+          "name": "HouseholdName",
+          "type": "string"
+        },
+        {
+          "name": "Region",
+          "type": "string"
+        },
+        {
+          "name": "Segment",
+          "type": "string"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "dim_account": {
+      "grain": "One row per synthetic account; all accounts open before the observation window",
+      "primary_key": [
+        "AccountKey"
+      ],
+      "expected_rows": 20000,
+      "references": {},
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "AccountKey",
+          "type": "int"
+        },
+        {
+          "name": "AccountNumber",
+          "type": "string"
+        },
+        {
+          "name": "AccountType",
+          "type": "string"
+        },
+        {
+          "name": "CurrencyCode",
+          "type": "string"
+        },
+        {
+          "name": "OpenDate",
+          "type": "date"
+        },
+        {
+          "name": "AccountStatus",
+          "type": "string"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "dim_advisor": {
+      "grain": "One row per advisor; team and branch attributes denormalized into the dimension",
+      "primary_key": [
+        "AdvisorKey"
+      ],
+      "expected_rows": 100,
+      "references": {},
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "AdvisorKey",
+          "type": "int"
+        },
+        {
+          "name": "AdvisorName",
+          "type": "string"
+        },
+        {
+          "name": "TeamName",
+          "type": "string"
+        },
+        {
+          "name": "BranchName",
+          "type": "string"
+        },
+        {
+          "name": "AdvisorRegion",
+          "type": "string"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "dim_product": {
+      "grain": "One row per analytical product; not a production product catalogue",
+      "primary_key": [
+        "ProductKey"
+      ],
+      "expected_rows": 8,
+      "references": {},
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "ProductKey",
+          "type": "int"
+        },
+        {
+          "name": "ProductName",
+          "type": "string"
+        },
+        {
+          "name": "ProductFamily",
+          "type": "string"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "dim_channel": {
+      "grain": "One row per engagement or transaction channel",
+      "primary_key": [
+        "ChannelKey"
+      ],
+      "expected_rows": 5,
+      "references": {},
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "ChannelKey",
+          "type": "int"
+        },
+        {
+          "name": "ChannelName",
+          "type": "string"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "dim_campaign": {
+      "grain": "One row per campaign, including key 0 for no campaign",
+      "primary_key": [
+        "CampaignKey"
+      ],
+      "expected_rows": 13,
+      "references": {},
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "CampaignKey",
+          "type": "int"
+        },
+        {
+          "name": "CampaignName",
+          "type": "string"
+        },
+        {
+          "name": "Objective",
+          "type": "string"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "bridge_account_owner": {
+      "grain": "One row per account/current owner; weights sum to one; not historical ownership",
+      "primary_key": [
+        "AccountKey",
+        "OwnerKey"
+      ],
+      "expected_rows": 24000,
+      "references": {
+        "AccountKey": "dim_account.AccountKey",
+        "OwnerKey": "dim_account_owner.OwnerKey"
+      },
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "AccountKey",
+          "type": "int"
+        },
+        {
+          "name": "OwnerKey",
+          "type": "int"
+        },
+        {
+          "name": "OwnerRole",
+          "type": "string"
+        },
+        {
+          "name": "OwnershipWeight",
+          "type": "decimal(5,4)"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "fact_transaction": {
+      "grain": "One row per booked account transaction; ClientKey is the historical primary economic client",
+      "primary_key": [
+        "TransactionKey"
+      ],
+      "expected_rows": 1000000,
+      "references": {
+        "BookingDateKey": "dim_date.DateKey",
+        "SettlementDateKey": "dim_date.DateKey",
+        "ClientKey": "dim_client.ClientKey",
+        "AccountKey": "dim_account.AccountKey",
+        "AdvisorKey": "dim_advisor.AdvisorKey",
+        "ProductKey": "dim_product.ProductKey",
+        "ChannelKey": "dim_channel.ChannelKey"
+      },
+      "inactive_relationship_columns": [
+        "SettlementDateKey"
+      ],
+      "columns": [
+        {
+          "name": "TransactionKey",
+          "type": "bigint"
+        },
+        {
+          "name": "BookingDateKey",
+          "type": "int"
+        },
+        {
+          "name": "SettlementDateKey",
+          "type": "int"
+        },
+        {
+          "name": "ClientKey",
+          "type": "int"
+        },
+        {
+          "name": "AccountKey",
+          "type": "int"
+        },
+        {
+          "name": "AdvisorKey",
+          "type": "int"
+        },
+        {
+          "name": "ProductKey",
+          "type": "int"
+        },
+        {
+          "name": "ChannelKey",
+          "type": "int"
+        },
+        {
+          "name": "SignedAmountCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "FeeCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "TransactionType",
+          "type": "string"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "fact_account_monthly": {
+      "grain": "One row per account/month-end; balances are additive across accounts, not across dates",
+      "primary_key": [
+        "AccountKey",
+        "DateKey"
+      ],
+      "expected_rows": 680000,
+      "references": {
+        "AccountKey": "dim_account.AccountKey",
+        "DateKey": "dim_date.DateKey",
+        "ClientKey": "dim_client.ClientKey",
+        "AdvisorKey": "dim_advisor.AdvisorKey",
+        "ProductKey": "dim_product.ProductKey"
+      },
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "AccountKey",
+          "type": "int"
+        },
+        {
+          "name": "DateKey",
+          "type": "int"
+        },
+        {
+          "name": "ClientKey",
+          "type": "int"
+        },
+        {
+          "name": "AdvisorKey",
+          "type": "int"
+        },
+        {
+          "name": "ProductKey",
+          "type": "int"
+        },
+        {
+          "name": "OpeningBalanceCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "NetFlowCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "MarketMovementCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "ClosingBalanceCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "TransactionFeesCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "RevenueCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "CostCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "fact_interaction": {
+      "grain": "One row per client interaction; not account or product grain",
+      "primary_key": [
+        "InteractionKey"
+      ],
+      "expected_rows": 100000,
+      "references": {
+        "DateKey": "dim_date.DateKey",
+        "ClientKey": "dim_client.ClientKey",
+        "AdvisorKey": "dim_advisor.AdvisorKey",
+        "ChannelKey": "dim_channel.ChannelKey",
+        "CampaignKey": "dim_campaign.CampaignKey"
+      },
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "InteractionKey",
+          "type": "bigint"
+        },
+        {
+          "name": "DateKey",
+          "type": "int"
+        },
+        {
+          "name": "ClientKey",
+          "type": "int"
+        },
+        {
+          "name": "AdvisorKey",
+          "type": "int"
+        },
+        {
+          "name": "ChannelKey",
+          "type": "int"
+        },
+        {
+          "name": "CampaignKey",
+          "type": "int"
+        },
+        {
+          "name": "DurationMinutes",
+          "type": "int"
+        },
+        {
+          "name": "SatisfactionScore",
+          "type": "int"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "fact_opportunity": {
+      "grain": "One row per opportunity, accumulating snapshot as of end_date; client version at creation",
+      "primary_key": [
+        "OpportunityKey"
+      ],
+      "expected_rows": 15000,
+      "references": {
+        "CreatedDateKey": "dim_date.DateKey",
+        "ExpectedCloseDateKey": "dim_date.DateKey",
+        "ActualCloseDateKey": "dim_date.DateKey",
+        "ClientKey": "dim_client.ClientKey",
+        "AdvisorKey": "dim_advisor.AdvisorKey",
+        "ProductKey": "dim_product.ProductKey",
+        "CampaignKey": "dim_campaign.CampaignKey"
+      },
+      "inactive_relationship_columns": [
+        "ExpectedCloseDateKey",
+        "ActualCloseDateKey"
+      ],
+      "columns": [
+        {
+          "name": "OpportunityKey",
+          "type": "bigint"
+        },
+        {
+          "name": "CreatedDateKey",
+          "type": "int"
+        },
+        {
+          "name": "ExpectedCloseDateKey",
+          "type": "int"
+        },
+        {
+          "name": "ActualCloseDateKey",
+          "type": "int"
+        },
+        {
+          "name": "ClientKey",
+          "type": "int"
+        },
+        {
+          "name": "AdvisorKey",
+          "type": "int"
+        },
+        {
+          "name": "ProductKey",
+          "type": "int"
+        },
+        {
+          "name": "CampaignKey",
+          "type": "int"
+        },
+        {
+          "name": "Stage",
+          "type": "string"
+        },
+        {
+          "name": "EstimatedValueCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "Probability",
+          "type": "decimal(4,3)"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    },
+    "fact_target": {
+      "grain": "One row per month/advisor/product/scenario; never allocate implicitly to clients/accounts",
+      "primary_key": [
+        "DateKey",
+        "AdvisorKey",
+        "ProductKey",
+        "Scenario"
+      ],
+      "expected_rows": 54400,
+      "references": {
+        "DateKey": "dim_date.DateKey",
+        "AdvisorKey": "dim_advisor.AdvisorKey",
+        "ProductKey": "dim_product.ProductKey"
+      },
+      "inactive_relationship_columns": [],
+      "columns": [
+        {
+          "name": "DateKey",
+          "type": "int"
+        },
+        {
+          "name": "AdvisorKey",
+          "type": "int"
+        },
+        {
+          "name": "ProductKey",
+          "type": "int"
+        },
+        {
+          "name": "Scenario",
+          "type": "string"
+        },
+        {
+          "name": "RevenueTargetCAD",
+          "type": "decimal(18,2)"
+        },
+        {
+          "name": "NewClientsTarget",
+          "type": "int"
+        },
+        {
+          "name": "IsSynthetic",
+          "type": "boolean"
+        }
+      ]
+    }
+  },
+  "semantic_rules": [
+    "Fact foreign keys are many-to-one with single-direction filters from dimensions.",
+    "No direct fact-to-fact relationships or dimension-to-dimension relationships.",
+    "Inactive date relationships require USERELATIONSHIP measures or separate role-playing date tables.",
+    "Distinct clients means DISTINCTCOUNT(dim_client[ClientId]), not a count of SCD version keys.",
+    "Closing balances are semi-additive: select last visible snapshot date, then sum accounts.",
+    "Ownership bridge has two incoming single-direction relationships; use TREATAS for owner-to-account measures.",
+    "Current ownership does not rewrite historical primary economic-client attribution.",
+    "Select exactly one target scenario; targets are not meaningful at client/account grain.",
+    "Illustrative CAD-only portfolios; market movements are synthetic, not real market returns.",
+    "External sources in the contract are intended destinations; no external connectivity is claimed."
+  ]
+}

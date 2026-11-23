@@ -1,0 +1,20 @@
+{
+  "workspace_id": "<your-fabric-workspace-guid>",
+  "lakehouses": {
+    "lh_bronze_channel": "<lakehouse-guid>",
+    "lh_bronze_uc": "<lakehouse-guid>",
+    "lh_bronze_sql_onprem": "<lakehouse-guid>",
+    "lh_bronze_s3": "<lakehouse-guid>",
+    "lh_ca_silver": "<lakehouse-guid>",
+    "lh_ca_gold": "<lakehouse-guid>"
+  },
+  "sql_server": "<sql-host-or-host\\instance>",
+  "sql_database": "ClientAnalytics",
+  "postgres_server": "<postgres-host>:5432",
+  "postgres_database": "client_analytics",
+  "databricks_host": "<workspace-host>.azuredatabricks.net",
+  "databricks_http_path": "/sql/1.0/warehouses/<warehouse-id>",
+  "databricks_catalog": "ca_catalog",
+  "semantic_model_id": null,
+  "paginated_report_id": null
+}

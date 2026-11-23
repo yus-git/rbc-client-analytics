@@ -1,0 +1,130 @@
+{
+  "dim_account": {
+    "grain": "One row per synthetic account; all accounts open before the observation window",
+    "primary_key": [
+      "AccountKey"
+    ],
+    "intended_source": "Azure Databricks Unity Catalog",
+    "actual_source": "Fabric synthetic generator",
+    "expected_rows": 20000,
+    "references": {},
+    "inactive_relationship_columns": [],
+    "columns": [
+      {
+        "name": "AccountKey",
+        "type": "int"
+      },
+      {
+        "name": "AccountNumber",
+        "type": "string"
+      },
+      {
+        "name": "AccountType",
+        "type": "string"
+      },
+      {
+        "name": "CurrencyCode",
+        "type": "string"
+      },
+      {
+        "name": "OpenDate",
+        "type": "date"
+      },
+      {
+        "name": "AccountStatus",
+        "type": "string"
+      },
+      {
+        "name": "IsSynthetic",
+        "type": "boolean"
+      }
+    ],
+    "seed_file": "databricks_uc\\dim_account.parquet"
+  },
+  "dim_product": {
+    "grain": "One row per analytical product; not a production product catalogue",
+    "primary_key": [
+      "ProductKey"
+    ],
+    "intended_source": "Azure Databricks Unity Catalog",
+    "actual_source": "Fabric synthetic generator",
+    "expected_rows": 8,
+    "references": {},
+    "inactive_relationship_columns": [],
+    "columns": [
+      {
+        "name": "ProductKey",
+        "type": "int"
+      },
+      {
+        "name": "ProductName",
+        "type": "string"
+      },
+      {
+        "name": "ProductFamily",
+        "type": "string"
+      },
+      {
+        "name": "IsSynthetic",
+        "type": "boolean"
+      }
+    ],
+    "seed_file": "databricks_uc\\dim_product.parquet"
+  },
+  "fact_interaction": {
+    "grain": "One row per client interaction; not account or product grain",
+    "primary_key": [
+      "InteractionKey"
+    ],
+    "intended_source": "Azure Databricks Unity Catalog",
+    "actual_source": "Fabric synthetic generator",
+    "expected_rows": 100000,
+    "references": {
+      "DateKey": "dim_date.DateKey",
+      "ClientKey": "dim_client.ClientKey",
+      "AdvisorKey": "dim_advisor.AdvisorKey",
+      "ChannelKey": "dim_channel.ChannelKey",
+      "CampaignKey": "dim_campaign.CampaignKey"
+    },
+    "inactive_relationship_columns": [],
+    "columns": [
+      {
+        "name": "InteractionKey",
+        "type": "bigint"
+      },
+      {
+        "name": "DateKey",
+        "type": "int"
+      },
+      {
+        "name": "ClientKey",
+        "type": "int"
+      },
+      {
+        "name": "AdvisorKey",
+        "type": "int"
+      },
+      {
+        "name": "ChannelKey",
+        "type": "int"
+      },
+      {
+        "name": "CampaignKey",
+        "type": "int"
+      },
+      {
+        "name": "DurationMinutes",
+        "type": "int"
+      },
+      {
+        "name": "SatisfactionScore",
+        "type": "int"
+      },
+      {
+        "name": "IsSynthetic",
+        "type": "boolean"
+      }
+    ],
+    "seed_file": "databricks_uc\\fact_interaction.parquet"
+  }
+}
