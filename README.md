@@ -64,6 +64,8 @@ dimensions do not universally require DirectQuery.
 Use Python 3.12+; PowerShell 7 and Azure CLI are needed only for cloud commands.
 
 ```powershell
+git clone https://github.com/yus-git/rbc-client-analytics.git
+Set-Location rbc-client-analytics
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
@@ -106,3 +108,4 @@ architecture and a **separate private-network deployment option**. The VNet
 option requires implementation and acceptance in the target environment.
 
 [Official reference index](docs/references.md) | [Contributing](CONTRIBUTING.md)
+| [Validation workflow](https://github.com/yus-git/rbc-client-analytics/actions/workflows/validate.yml)

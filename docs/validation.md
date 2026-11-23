@@ -13,11 +13,11 @@
 The repository includes a CI workflow that repeats local validation.
 There are no automated changes to a customer's tenant in CI.
 
-**Initial publication CI status:** GitHub-hosted runners were disabled by
-enterprise policy, so the hosted job did not execute its tests. Local unit tests
-and an independent clean Git-archive validation passed. A GitHub enterprise
-administrator must approve runner availability before hosted CI can execute;
-no policy bypass or unapproved runner was configured.
+**GitHub-hosted validation:** the public repository's
+[validation run](https://github.com/yus-git/rbc-client-analytics/actions/runs/45236084437)
+passed on 23 November 2026 using Ubuntu and Python 3.12. It executed the unit
+tests and complete seed/documentation checks in a clean checkout. This
+complements local validation; it does not provision or validate a Fabric tenant.
 
 ## Original service evidence
 
