@@ -10,7 +10,7 @@
 | Portable package local tests | Target IDs substitute correctly; seed/model/report contracts are preserved | A new tenant's credentials, network routes or capacity |
 | Customer acceptance after deployment | Your environment's behavior for tested roles/workloads | Unmeasured production load or future service availability |
 
-The private repository includes a CI workflow that repeats local validation.
+The repository includes a CI workflow that repeats local validation.
 There are no automated changes to a customer's tenant in CI.
 
 **Initial publication CI status:** GitHub-hosted runners were disabled by
@@ -97,7 +97,7 @@ ROW(
 )
 ```
 
-Expected in unrestricted demo context: **5, 11,000, 100, 1,000,000, 15,000, 13,
+Expected with the unrestricted reference dataset: **5, 11,000, 100, 1,000,000, 15,000, 13,
 54,400** respectively.
 
 ### Cross-source advisor/product measures
@@ -127,7 +127,7 @@ first-of-month targets: use Year Month.
 3. Verify 45 pages, all 800 advisor/product rows, repeat headers and last page.
 4. Export September 2026 / Ontario / Stretch CSV; verify 160 rows and totals.
 5. Export XLSX; compare numbers, column widths, merge behavior, row groups and
-   print settings. XLSX is an outstanding original-demo acceptance test.
+   print settings. XLSX remains an outstanding acceptance test.
 
 ### UI, access and performance acceptance
 
@@ -145,14 +145,14 @@ first-of-month targets: use Year Month.
   repository. Publication helpers are locally checked and deliberately require
   explicit Apply; they still need environment acceptance.
 - Report interaction metadata was authored, but exhaustive click-through UI
-  validation was not completed in the original environment.
+  validation was not completed in the reference environment.
 - Subscriptions, recipient schedules, live Activator rules, alerts, deployment
   pipelines, Control-M jobs and ClientFirst SSO were not provisioned.
 - No Snowflake source path was implemented.
 - PNG export was tenant-disabled; no policy workaround was applied.
-- PostgreSQL was a local process, not production service infrastructure; it later
-  exited. Do not interpret historical connection success as present uptime.
-- The model's demonstration RLS role is unassigned. It is not production
+- PostgreSQL used a manually managed local process rather than managed service
+  infrastructure. Historical connectivity checks do not establish current availability.
+- The model's example RLS role is unassigned. It is not production
   identity/entitlement management.
 - Native web-model diagram rearrangement is not guaranteed by local layouts.
 - Production SLAs, high availability, capacity sizing, accessibility, regulatory

@@ -33,7 +33,7 @@ if not (
     and start == date(2024, 1, 1)
     and end == date(2026, 10, 31)
 ):
-    raise ValueError("Unsupported demo profile; use even client counts and the documented bounds/dates.")
+    raise ValueError("Unsupported generation profile; use even client counts and the documented bounds/dates.")
 if not isinstance(reset_synthetic_tables, bool) or not isinstance(export_source_kits, bool):
     raise TypeError("Boolean notebook parameters must be booleans, not strings.")
 day_count = (end - start).days + 1
@@ -41,7 +41,7 @@ month_count = (end.year - start.year) * 12 + end.month - start.month + 1
 advisor_count = 100
 context = notebookutils.runtime.context
 if not context.get("defaultLakehouseId"):
-    raise RuntimeError("Attach the schema-enabled demo Lakehouse before running.")
+    raise RuntimeError("Attach the schema-enabled target Lakehouse before running.")
 spark.conf.set("spark.sql.session.timeZone", "UTC")
 spark.conf.set("spark.sql.shuffle.partitions", "16")
 spark.conf.set("spark.sql.adaptive.enabled", "true")

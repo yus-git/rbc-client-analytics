@@ -25,7 +25,7 @@ if external_location and (
 target = f"`{catalog}`.`{schema}`.`fact_transaction`"
 spark.sql(f"CREATE SCHEMA IF NOT EXISTS `{catalog}`.`{schema}`")
 if spark.catalog.tableExists(target):
-    raise RuntimeError(f"Refusing to replace existing table {target}. Select a fresh demo schema.")
+    raise RuntimeError(f"Refusing to replace existing table {target}. Select a new isolated schema.")
 
 expected = {
     "TransactionKey": "bigint", "BookingDateKey": "int", "SettlementDateKey": "int",

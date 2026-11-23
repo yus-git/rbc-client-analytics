@@ -34,8 +34,8 @@ def build(
     }
     notebook.cells.append(nbformat.v4.new_markdown_cell(
         "# Synthetic Client Analytics: multi-fact star schema\n\n"
-        "Development demo only. All identities and financial values are synthetic. "
-        "No external source connection, security policy, or production readiness is implied.\n\n"
+        "All identities and financial values are synthetic. External source connections, "
+        "security policies and production acceptance require environment-specific configuration.\n\n"
         "The final cell publishes the success marker only after persisted-data quality checks "
         "and source extracts complete. A failed run can leave partial synthetic tables; "
         "inspect the error before explicitly enabling reset."

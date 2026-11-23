@@ -137,7 +137,7 @@ def column_description(source: str, column: str, spec: dict) -> str:
         "OwnershipWeight": "Current owner's fraction of the account; all owners' weights sum to one per account.",
         "ClosingBalanceCAD": "Account balance at month-end in CAD; additive across accounts, not across dates.",
         "SignedAmountCAD": "Booked contribution or withdrawal in CAD; reconciles to monthly net flows.",
-        "IsSynthetic": "True for every row in this fictional demonstration; no real client data.",
+        "IsSynthetic": "True for every row in this synthetic dataset; no real client data.",
         "Probability": "Synthetic win probability from zero to one; used to weight open opportunity value.",
         "Region": "Synthetic regional grouping for this dimension's analytical role.",
         "AdvisorRegion": "Synthetic advisor-office region; independent of a client's region.",
@@ -192,7 +192,7 @@ def build(before: dict, contract: dict, databricks: dict, output: Path, *, setti
     model["discourageImplicitMeasures"] = True
     model["dataAccessOptions"]["returnErrorValuesAsNull"] = False
     model["description"] = (
-        "Synthetic Client Analytics composite demo: Gold Direct Lake, SQL and Databricks DirectQuery, "
+        "Synthetic Client Analytics composite model: Gold Direct Lake, SQL and Databricks DirectQuery, "
         "PostgreSQL and Excel Import. CAD amounts; facts through 2026-10-31. "
         "Historical economic clients and current account owners are distinct roles."
     )
@@ -209,7 +209,7 @@ def build(before: dict, contract: dict, databricks: dict, output: Path, *, setti
             "name": name, "lineageTag": new_tag(), "columns": [], "partitions": [partition(source, spec)]
         }
         table["name"] = name
-        table["description"] = spec["grain"] + ". Synthetic CAD demonstration data."
+        table["description"] = spec["grain"] + ". Synthetic data; financial amounts are in CAD."
         original_columns = {c["sourceColumn"]: c for c in table["columns"]}
         columns = []
         for definition in spec["columns"]:
@@ -269,7 +269,7 @@ def build(before: dict, contract: dict, databricks: dict, output: Path, *, setti
     model["tables"] = tables
     model["relationships"] = relationships
     model["roles"] = [{
-        "name": "Demo - Ontario Advisors", "modelPermission": "read",
+        "name": "Example - Ontario Advisors", "modelPermission": "read",
         "description": "Illustrative advisor-office RLS. Does not constitute client/account entitlement security. No members assigned.",
         "tablePermissions": [{"name": "Advisors", "filterExpression": "'Advisors'[Advisor Region] = \"Ontario\""}],
     }]

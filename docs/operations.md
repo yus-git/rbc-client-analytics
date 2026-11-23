@@ -1,6 +1,6 @@
 # Operations, governance and automation
 
-[Home](../README.md) | [Validation](validation.md) | [Demo playbook](demo-playbook.md)
+[Home](../README.md) | [Validation](validation.md) | [Solution guide](solution-guide.md)
 
 ## Refresh is a dependency graph, not one button
 
@@ -25,7 +25,7 @@ schema-evolution contracts explicitly.
 ### Source liveness
 
 - Run the on-premises gateway on managed, always-on infrastructure with recovery
-  and maintenance ownership; do not depend on an interactive laptop session.
+  and maintenance ownership; do not depend on an interactive user session.
 - Install PostgreSQL as a managed service or use an approved managed database.
   A previously successful connectivity check is not a current health guarantee.
 - Monitor warehouse auto-stop/start latency, concurrency and spend.
@@ -152,7 +152,7 @@ scheduler authentication.
 - No generic "send subscription" REST endpoint is assumed. Use a supported
   delivery mechanism and verify its auth/licensing contract.
 
-The original tenant disabled PNG/image export. That policy was not changed.
+PNG/image export was disabled by policy in the validated environment.
 PDF and paginated CSV were verified; XLSX remains an explicit acceptance test.
 
 Example paginated export after deployment:
@@ -182,8 +182,9 @@ For an internal ClientFirst-style host:
   effective identities, capacity and tenant settings separately. Never put client
   secrets or an unrestricted embed-token minting endpoint in the browser.
 
-The demo includes navigation/documentation for embedding, **not a deployed
-ClientFirst application or verified seamless SSO**.
+This reference implementation includes embedding guidance. A ClientFirst host
+application and end-to-end SSO integration require separate implementation
+and acceptance testing.
 
 ## Large data: decide using measured workloads
 
@@ -203,7 +204,7 @@ and resident/query memory are different. Evaluate current SKU limits, incrementa
 refresh, partitioning, source aggregations, column pruning, file optimization and
 representative concurrent users. Cross-source DQ joins can dominate latency.
 
-## Troubleshooting from the actual demo
+## Validated troubleshooting procedures
 
 | Error | Verified remedy / diagnostic |
 |---|---|

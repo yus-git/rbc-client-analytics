@@ -20,7 +20,7 @@ or grants access implicitly. Do not deploy into an existing production workspace
 ## 0. Prerequisites and decision gate
 
 - Fabric-enabled tenant and active Fabric capacity in a supported region.
-  The original demo used **F32**; this is historical context, not sizing advice.
+  The reference deployment used **F32**; size the target capacity using measured workloads.
   Power BI user licensing still applies, especially for consumers on capacities
   below F64. Check the current [license guidance](https://learn.microsoft.com/en-us/fabric/enterprise/licenses).
 - Workspace Contributor or higher for item creation; administrative permissions
@@ -37,13 +37,13 @@ or grants access implicitly. Do not deploy into an existing production workspace
 - ODBC Driver 18 + `pyodbc` for SQL loading; `psql` for PostgreSQL loading.
   These source-specific tools are not required by local package validation.
 
-Choose [public-connectivity demo](sources.md) or
+Choose the [public-connectivity architecture](sources.md) or
 [private Databricks connectivity](databricks-vnet.md) **before creating resources**.
-Do not start a private-network conversion during a customer demonstration.
+Schedule network changes through the organization's approved change-control process.
 
 ## 1. Clone, validate and configure
 
-Clone the private repository using approved GitHub access. From its root:
+Clone the repository. From its root:
 
 ```powershell
 python -m venv .venv
@@ -56,12 +56,12 @@ az login --tenant <your-tenant-id>
 ```
 
 The example deliberately contains invalid placeholders: the builder refuses
-them instead of accidentally contacting the original demo. Never copy an old
+them instead of contacting an unintended environment. Never copy an old
 deployment response, report ID or connection ID from another environment.
 
 ## 2. Create the workspace and lakehouses
 
-In Fabric, create a new workspace such as **Client-Analytics-Demo** and assign it
+In Fabric, create a new workspace such as **Client-Analytics-Dev** and assign it
 to your active capacity. Create the following **schema-enabled** lakehouses,
 using these names (the transformation notebook verifies target names):
 
@@ -82,7 +82,7 @@ REST equivalents, when organizational policy permits:
 
 ```text
 POST /v1/workspaces
-  {"displayName":"Client-Analytics-Demo"}
+  {"displayName":"Client-Analytics-Dev"}
 POST /v1/workspaces/{workspaceId}/assignToCapacity
   {"capacityId":"<capacity-guid>"}
 POST /v1/workspaces/{workspaceId}/items
@@ -197,7 +197,7 @@ pwsh tools\publish_item.ps1 -Collection reports `
   -ResultPath .generated\interactive-created.json -Apply
 ```
 
-**Paginated API fallback:** the original environment rejected the explicit
+**Paginated API compatibility:** the validated environment rejected the explicit
 `PaginatedReportDefinition` format. This package omits it for the default format.
 If a create is still rejected, import the generated `.rdl` through the Power BI
 Service upload experience, or open it in Report Builder and publish to the same
@@ -216,6 +216,6 @@ the actual resulting report ID; do not create duplicates.
 - Record region, capacity, gateway availability, owners, cost controls and
   restore/cleanup responsibilities in your internal deployment record.
 
-For teardown, remove only approved demo item/resource IDs. Check dependencies
+For decommissioning, remove only approved solution item/resource IDs. Check dependencies
 first. Do not delete shared gateways, capacities, VNets, catalog storage,
 authentication workspaces or databases.

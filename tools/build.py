@@ -134,7 +134,7 @@ def build_notebooks(config, contract, output):
             ROOT / "notebooks" / "transform_demo_medallion.py",
             config["workspace_id"], config["lakehouses"][lakehouse], lakehouse,
             output_path=output / f"{name}.ipynb", title=name,
-            introduction="Run only in the configured demo lakehouse. A PASSED marker is required "
+            introduction="Run only in the configured target lakehouse. A PASSED marker is required "
                          "before downstream consumption. Table writes are not cross-table atomic.",
             parameter_source=f"layer = {layer!r}\nconfig_json = {json.dumps(settings)!r}",
         )

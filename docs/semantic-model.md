@@ -2,7 +2,7 @@
 
 [Home](../README.md) | [Architecture](architecture.md) | [Deployment](deployment.md)
 
-## How the original model was configured
+## Model configuration
 
 1. Read the existing eight-table Gold model with Fabric `getDefinition`.
 2. Preserve the original Direct Lake shared expression and its entity sources.
@@ -16,7 +16,7 @@
 7. Refresh and run targeted cross-source DAX queries, then render report exports.
 
 The portable builder constructs the same kind of pristine eight-table definition
-locally, then extends it. This avoids needing the original tenant's model backup.
+locally, then extends it. No model backup from another tenant is required.
 It does **not** export credentials or recreate gateway objects.
 
 ## Direct Lake partitions
@@ -98,10 +98,10 @@ not prove OAuth credentials for Excel Import refresh are configured.
 
 | Model source | Connection type | Route | Identity configuration |
 |---|---|---|---|
-| Gold OneLake + planning file access | ADLS Gen2/OneLake cloud connection | Cloud, unless a separately supported security design applies | Explicit organizational-account OAuth in the tested demo |
-| SQL host/database | SQL Server | Standard on-premises gateway | Windows account in the original demo; approved read identity in yours |
-| Databricks host/warehouse path | Azure Databricks | Cloud in original demo; VNet gateway in private option | Approved Entra/OAuth or service identity |
-| PostgreSQL host:port/database | PostgreSQL | Standard on-premises gateway in original demo | Read-only Basic account; TLS in customer deployment |
+| Gold OneLake + planning file access | ADLS Gen2/OneLake cloud connection | Cloud, unless a separately supported security design applies | Explicit organizational-account OAuth in the validated configuration |
+| SQL host/database | SQL Server | Standard on-premises gateway | Windows account in the reference configuration; approved read identity in the target environment |
+| Databricks host/warehouse path | Azure Databricks | Cloud in the reference configuration; VNet gateway in the private option | Approved Entra/OAuth or service identity |
+| PostgreSQL host:port/database | PostgreSQL | Standard on-premises gateway in the reference configuration | Read-only Basic account; TLS required for operational deployment |
 
 Catalog mirroring uses a **separate Azure Databricks workspace connection**,
 outside these semantic-model source mappings.
@@ -175,7 +175,7 @@ Adding @ to the binding caused the original undeclared-parameter error.
 
 The report is landscape Letter, repeats column headers and includes page
 numbering. Default parameters rendered 800 detail rows over 45 PDF pages in the
-original environment. It is not a screenshot of a scrolling interactive table.
+validated environment. It is not a screenshot of a scrolling interactive table.
 
 ## Editing an existing deployment safely
 

@@ -22,7 +22,7 @@ if str(context["currentWorkspaceId"]) != config["workspace_id"]:
 if str(context["defaultLakehouseId"]) != config["target_lakehouse_id"]:
     raise ValueError("Wrong default lakehouse; no tables will be written.")
 if context["defaultLakehouseName"] != f"lh_ca_{layer}":
-    raise ValueError("The target is not the intended demo Silver/Gold lakehouse.")
+    raise ValueError("The target is not the configured Silver/Gold lakehouse.")
 if config["target_lakehouse_id"] in {
     item["lakehouse_id"] for item in config["sources"].values()
 }:
@@ -203,15 +203,15 @@ totals = snapshot.agg(*[F.sum(column).alias(column) for column in baseline["tota
 for column, expected in baseline["totals"].items():
     require(totals[column] == Decimal(expected), f"Snapshot total differs from source baseline: {column}")
 latest = snapshot.agg(F.max("DateKey")).first()[0]
-require(latest == baseline["latest_date_key"], "Latest snapshot date differs from the demo baseline.")
+require(latest == baseline["latest_date_key"], "Latest snapshot date differs from the reference baseline.")
 latest_aum = snapshot.filter(F.col("DateKey") == latest).agg(F.sum("ClosingBalanceCAD")).first()[0]
-require(latest_aum == Decimal(baseline["latest_aum_cad"]), "Latest AUM differs from the demo baseline.")
+require(latest_aum == Decimal(baseline["latest_aum_cad"]), "Latest AUM differs from the reference baseline.")
 report["snapshot_totals"] = {column: str(totals[column]) for column in baseline["totals"]}
 report["latest_date_key"] = latest
 report["latest_aum_cad"] = str(latest_aum)
 print(f"Verified latest AUM: CAD {latest_aum}", flush=True)
 
-# %% Materialize safe demo snapshots and verify the persisted rows
+# %% Materialize validated snapshots and verify the persisted rows
 spark.sql("CREATE SCHEMA IF NOT EXISTS dbo")
 for name, frame in frames.items():
     target = f"dbo.{name}"

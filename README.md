@@ -2,17 +2,17 @@
 
 ### One governed analytical experience. Three deliberate data-access paths.
 
-A reproducible, synthetic Microsoft Fabric and Power BI reference demo combining
-Azure Databricks, SQL Server, PostgreSQL, Excel and Amazon S3. The customer
-experience is a connected interactive report and a parameterized, print-ready
-advisor pack, built on the same semantic model.
+A reproducible Microsoft Fabric and Power BI reference implementation integrating
+Azure Databricks, SQL Server, PostgreSQL, Excel and Amazon S3. Interactive
+analytics and a parameterized, print-ready advisor pack share a governed
+semantic model.
 
 **14 business tables | 1,915,987 rows | 29 relationships | 34 measures**
 
-> **Scope:** customer-facing reference implementation, not a production-certified
-> deployment. All identities and amounts are synthetic. The original demo was
-> exercised in November 2026; this portable package is locally validated, not
-> evidence of a fresh deployment into every customer's tenant. See
+> **Implementation scope:** all identities and financial values are synthetic.
+> Service validation was performed in November 2026; the portable package also
+> includes local validation. Production adoption requires environment-specific
+> security, performance and operational acceptance. See
 > [validation and limitations](docs/validation.md) and [notice](NOTICE.md).
 
 ![Three storage-mode paths into one semantic model](docs/diagrams/data-paths.drawio.svg)
@@ -23,27 +23,28 @@ advisor pack, built on the same semantic model.
 |---|---|
 | Understand the architecture and every table's path | [Architecture and inventory](docs/architecture.md) |
 | Inspect field types, keys and fact grain | [Complete data dictionary](docs/data-dictionary.md) |
-| Re-create the demo in your own environment | [Deployment walkthrough](docs/deployment.md) |
+| Deploy the solution in your own environment | [Deployment walkthrough](docs/deployment.md) |
 | Load SQL, Databricks, PostgreSQL, Excel and S3 | [Source configuration](docs/sources.md) |
 | Understand Direct Lake, DirectQuery and Import setup | [Semantic model and reports](docs/semantic-model.md) |
 | Make Databricks access private | [Databricks VNet and Private Link](docs/databricks-vnet.md) |
-| Present the customer demonstration | [Demo playbook](docs/demo-playbook.md) |
+| Explore analytical workflows and supported capabilities | [Solution guide](docs/solution-guide.md) |
 | Operate, govern, automate or troubleshoot it | [Operations and governance](docs/operations.md) |
 | Know what was actually tested | [Validation and known limitations](docs/validation.md) |
 | Open the verified 45-page synthetic output | [Sample advisor pack PDF](samples/advisor-pack.pdf) |
 
-## The design in 60 seconds
+## Architecture at a glance
 
 | Access path | Tables | Why it exists |
 |---|---|---|
 | **Direct Lake on OneLake** | Eight curated Gold tables | Read Delta data without a traditional full Import copy; preserve a governed lakehouse layer. |
-| **DirectQuery** | Transactions from Databricks; Clients and Advisors from SQL Server | Demonstrate querying external systems without importing these tables into the semantic model. |
+| **DirectQuery** | Transactions from Databricks; Clients and Advisors from SQL Server | Query external systems without importing these tables into the semantic model. |
 | **Import** | Opportunities from PostgreSQL; Campaigns and Targets from Excel | Refresh snapshots of smaller operational/planning datasets for in-memory analysis. |
 
 All paths converge in **`sm_client_analytics`**, not in chained semantic models.
 Shared dimensions provide consistent slicing; explicit measures define AUM,
-revenue, pipeline and plan attainment. This deliberate mixed-mode design is for
-demonstration: it is not a recommendation to put every small dimension in DirectQuery.
+revenue, pipeline and plan attainment. Storage-mode selection should be evaluated
+against freshness, source governance, latency and capacity requirements; small
+dimensions do not universally require DirectQuery.
 
 ## Included
 
@@ -81,10 +82,10 @@ python tools\build.py notebooks --config config\environment.local.json
 python tools\build.py model --config config\environment.local.json
 ```
 
-**There is no one-click deployment claim.** Tenant permissions, licensed capacity,
-source infrastructure, source authentication, shortcuts/copy jobs and security
-approvals are explicit prerequisites. The guide separates manual setup from
-automated artifact generation and publication.
+**Deployment prerequisites:** tenant permissions, licensed capacity, source
+infrastructure, authentication, shortcuts/copy jobs and security approvals.
+The guide distinguishes environment configuration from automated artifact
+generation and publication.
 
 ## Repository map
 
@@ -100,8 +101,8 @@ samples/      Verified synthetic paginated output
 .generated/   Your generated artifacts and deployment records (not committed)
 ```
 
-The diagrams and procedures describe the implemented public-connectivity demo
-and a **separate, documented private-network option**. No VNet was provisioned
-as part of packaging this repository.
+The diagrams and procedures describe the validated public-connectivity
+architecture and a **separate private-network deployment option**. The VNet
+option requires implementation and acceptance in the target environment.
 
 [Official reference index](docs/references.md) | [Contributing](CONTRIBUTING.md)

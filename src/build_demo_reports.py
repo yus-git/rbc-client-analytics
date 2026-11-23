@@ -1,4 +1,4 @@
-"""Build connected PBIR and paginated RDL reports for the client analytics demo."""
+"""Build connected PBIR and paginated RDL reports for Client Analytics."""
 
 import argparse
 import base64
@@ -19,7 +19,7 @@ PAGES = {
     "executive": "01 Executive Overview",
     "advisors": "02 Advisor Performance",
     "pipeline": "03 Pipeline and Campaigns",
-    "guide": "04 Demo Guide",
+    "guide": "04 Solution Guide",
     "client": "Client Detail",
 }
 RDL_NS = "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition"
@@ -161,7 +161,7 @@ class Report:
         self.button(page, f"{page}_learn", (928, 78, 224, 38), "Power BI documentation",
                     "WebUrl", "https://learn.microsoft.com/power-bi/")
         self.text(page, f"{page}_footer", (32, 854, 1376, 30),
-                  "SYNTHETIC DEMO | CAD | " + subtitle, 10)
+                  "SYNTHETIC DATA | CAD | " + subtitle, 10)
 
     def slicer(self, page, name, box, table, prop, title, values=None):
         v = self.visual(page, name, "slicer", box, title, {"Values": [projection(table, prop)]})
@@ -628,7 +628,7 @@ def main():
     (args.output / f"{RDL_NAME}.rdl").write_bytes(rdl)
     requests = {
         "interactive_request.json": envelope(encoded, REPORT_NAME,
-            "Synthetic client analytics: cross-source insights, drill-through, planning, bookmarks and guided demo.", "PBIR"),
+            "Synthetic client analytics: cross-source insights, drill-through, planning, bookmarks and solution guidance.", "PBIR"),
         "paginated_request.json": envelope({f"{RDL_NAME}.rdl": rdl}, RDL_NAME,
             "Parameterized advisor/product performance with Excel targets, repeated headers and complete detail export.",
             "PaginatedReportDefinition"),

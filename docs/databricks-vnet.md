@@ -2,8 +2,8 @@
 
 [Home](../README.md) | [Deployment](deployment.md) | [Source setup](sources.md)
 
-**Status:** documented deployment option, not provisioned or tested in the
-original laptop/public-connectivity demo. Official guidance reviewed
+**Status:** documented deployment option; not part of the validated
+public-connectivity baseline. Official guidance reviewed
 **23 November 2026**. Re-check product availability, region and tenant settings
 before design approval.
 
@@ -198,7 +198,7 @@ that the workspace VNet gateway tunnels every downstream shortcut read.
 | Recovery | Documented owner, rollback path, logs and support evidence |
 
 Do not reuse an existing browser-authentication endpoint/workspace without its
-owner's approval, and never delete that shared workspace as part of demo cleanup.
+owner's approval, and never delete that shared workspace when decommissioning this solution.
 
 ## Troubleshooting by symptom
 

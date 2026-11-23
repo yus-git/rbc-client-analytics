@@ -7,7 +7,7 @@ checks. All source loaders are first-load tools, not scheduled refresh jobs.
 
 ## SQL Server
 
-**Original pattern:** a local named instance, Windows authentication and a
+**Reference configuration:** a local named instance, Windows authentication and a
 standard on-premises gateway on the same machine. The private instance name and
 credentials are intentionally not distributed. Use your own host/instance.
 
@@ -41,9 +41,9 @@ exactly. `localhost` only works when SQL and the gateway are on the same host;
 it is not a remote/cloud hostname. For an Azure SQL replacement, use the proper
 cloud connection/network route rather than assuming the on-premises mapping.
 
-Use a trusted server certificate with matching names for customer environments.
-The original laptop demonstration needed a local trust workaround; that setting
-is deliberately not packaged as a deployment default.
+Use a trusted server certificate with matching names for deployed environments.
+The local reference environment used a certificate-trust exception; that
+exception is not included in the deployment defaults.
 
 ## Azure Databricks: two separate paths
 
@@ -76,7 +76,7 @@ persisted values. It uses Spark Connect-compatible fail-if-exists mode `error`.
 
 ### B. DirectQuery Transactions
 
-1. Create/start a SQL warehouse. The original demo used a **serverless SQL
+1. Create/start a SQL warehouse. The reference deployment used a **serverless SQL
    warehouse**; it was not classic compute inside a customer-injected VNet.
 2. From warehouse **Connection details**, copy the server hostname and HTTP path.
 3. Give the connection identity warehouse **CAN USE**, `USE CATALOG`,
@@ -137,9 +137,9 @@ For private endpoints, follow the **mirrored-catalog** branch of the
    separate read-only account for model refresh. Match `host:port` and database.
 5. Use TLS with trusted certificates in customer environments.
 
-The original loopback-only laptop demo used an unencrypted local connection and
-a manually started PostgreSQL process. That is **not** an always-on service
-design. Service startup, recovery, TLS and monitoring are deployment prerequisites.
+The reference configuration used an unencrypted loopback connection and a
+manually started PostgreSQL process. Operational deployments require a managed
+service lifecycle, recovery, TLS and monitoring.
 If a connection is actively refused, check the listener and gateway route before
 changing a password. Do not run the data loader as a server-restart remedy.
 
