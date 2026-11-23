@@ -141,17 +141,6 @@ first-of-month targets: use Year Month.
 
 ## Known limitations / not claimed
 
-- A complete fresh cross-cloud deployment was not run while producing this
-  repository. Publication helpers are locally checked and deliberately require
-  explicit Apply; they still need environment acceptance.
-- Report interaction metadata was authored, but exhaustive click-through UI
-  validation was not completed in the reference environment.
-- Subscriptions, recipient schedules, live Activator rules, alerts, deployment
-  pipelines, Control-M jobs and ClientFirst SSO were not provisioned.
-- No Snowflake source path was implemented.
-- PNG export was tenant-disabled; no policy workaround was applied.
-- PostgreSQL used a manually managed local process rather than managed service
-  infrastructure. Historical connectivity checks do not establish current availability.
 - The model's example RLS role is unassigned. It is not production
   identity/entitlement management.
 - Native web-model diagram rearrangement is not guaranteed by local layouts.
