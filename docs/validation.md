@@ -13,6 +13,12 @@
 The private repository includes a CI workflow that repeats local validation.
 There are no automated changes to a customer's tenant in CI.
 
+**Initial publication CI status:** GitHub-hosted runners were disabled by
+enterprise policy, so the hosted job did not execute its tests. Local unit tests
+and an independent clean Git-archive validation passed. A GitHub enterprise
+administrator must approve runner availability before hosted CI can execute;
+no policy bypass or unapproved runner was configured.
+
 ## Original service evidence
 
 | Check | Verified result |
